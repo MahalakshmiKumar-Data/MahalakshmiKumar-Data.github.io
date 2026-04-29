@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahalakshmi Kumar — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --card: #1a1a26;
+    --border: #2a2a3d;
+    --accent: #7c6af7;
+    --accent2: #f7c26a;
+    --accent3: #6af7c2;
+    --text: #e8e8f0;
+    --muted: #8888aa;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 200px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(106,247,194,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(124,106,247,0.12);
+    border: 1px solid rgba(124,106,247,0.3);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-sub {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 480px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124,106,247,0.35);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .stat-card:hover::before { opacity: 1; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 2rem; height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  .skills-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .skill-group:hover { border-color: var(--accent); }
+  .skill-group-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 1.2rem;
+  }
+  .skill-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .pill {
+    background: rgba(124,106,247,0.1);
+    border: 1px solid rgba(124,106,247,0.2);
+    color: var(--text);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: 'DM Mono', monospace;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .pill:hover {
+    background: rgba(124,106,247,0.2);
+    border-color: var(--accent);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 48px rgba(124,106,247,0.12);
+  }
+  .project-thumb {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-body {
+    padding: 1.8rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-category {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+  }
+  .project-desc {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    flex: 1;
+  }
+  .project-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+  .tool-tag {
+    background: rgba(247,194,106,0.1);
+    border: 1px solid rgba(247,194,106,0.2);
+    color: var(--accent2);
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2.5rem;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -2.6rem;
+    top: 0.3rem;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 3px rgba(124,106,247,0.3);
+  }
+  .timeline-date {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+    font-family: 'DM Mono', monospace;
+  }
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .timeline-company {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  .timeline-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .timeline-points li {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .timeline-points li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent3);
+    font-size: 0.75rem;
+  }
+
+  /* CERTIFICATIONS */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cert-card:hover {
+    border-color: var(--accent3);
+    transform: translateX(4px);
+  }
+  .cert-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+  .cert-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .cert-date {
+    font-size: 0.72rem;
+    color: var(--accent3);
+    font-family: 'DM Mono', monospace;
+    margin-top: 0.3rem;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 6rem 4rem;
+    text-align: center;
+  }
+  .contact-inner { max-width: 600px; margin: 0 auto; }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1.6rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.5rem; }
+    .contact-section { padding: 4rem 1.5rem; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MK<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">Available for Data Analyst Roles</div>
+      <h1>Mahalakshmi<br><em>Kumar</em></h1>
+      <p class="hero-sub">Data-focused professional with 6+ years in data validation, ETL testing, and QA — now applying deep analytical skills in Python, SQL, Power BI & Tableau to deliver business insights that drive decisions.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">6<span>+</span></div>
+        <div class="stat-label">Years in Data & QA</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">1.3<span>M</span></div>
+        <div class="stat-label">Rows Validated (IADB ETL)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">500<span>+</span></div>
+        <div class="stat-label">Defects Identified & Reported</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">SLA Compliance (160 tickets)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills" class="fade-in">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-title">Tools & Technologies</h2>
+  <div class="skills-wrapper">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages & Analysis</div>
+      <div class="skill-pills">
+        <span class="pill">Python</span>
+        <span class="pill">SQL</span>
+        <span class="pill">MySQL</span>
+        <span class="pill">Excel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Visualisation & BI</div>
+      <div class="skill-pills">
+        <span class="pill">Power BI</span>
+        <span class="pill">Tableau</span>
+        <span class="pill">IBM Cognos</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ETL & Data Quality</div>
+      <div class="skill-pills">
+        <span class="pill">IBM DataStage</span>
+        <span class="pill">ETL Testing</span>
+        <span class="pill">Data Validation</span>
+        <span class="pill">JIRA</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Methodologies</div>
+      <div class="skill-pills">
+        <span class="pill">Agile / Scrum</span>
+        <span class="pill">ISO 20022</span>
+        <span class="pill">21 CFR Part 11</span>
+        <span class="pill">RTM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="fade-in">
+  <div class="section-label">Portfolio</div>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #1a1a40 0%, #2d1a4a 100%);">📊</div>
+      <div class="project-body">
+        <div class="project-category" style="color: #7c6af7;">Data Visualisation</div>
+        <div class="project-title">Retail Sales Performance Analysis</div>
+        <p class="project-desc">Analysed retail sales data to uncover performance trends, identify top-performing categories, and surface actionable business insights through interactive dashboards.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Excel</span>
+          <span class="tool-tag">SQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #1a2a1a 0%, #1a3a2a 100%);">🐍</div>
+      <div class="project-body">
+        <div class="project-category" style="color: #6af7c2;">Python Analysis</div>
+        <div class="project-title">Insurance Charges Analysis</div>
+        <p class="project-desc">Used Python (pandas, seaborn, regression) to analyse factors influencing insurance costs — age, BMI, smoking status — identifying key pricing drivers and delivering statistically grounded recommendations.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">Pandas</span>
+          <span class="tool-tag">Seaborn</span>
+          <span class="tool-tag">Regression</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #2a1a1a 0%, #3a2a1a 100%);">📈</div>
+      <div class="project-body">
+        <div class="project-category" style="color: #f7c26a;">Tableau Dashboard</div>
+        <div class="project-title">Coffee Chain Sales & Profit Analysis 2021–2025</div>
+        <p class="project-desc">Built Tableau dashboards to analyse revenue, profit trends, and regional performance across 5 years, enabling data-driven business decision-making for the leadership team.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Tableau</span>
+          <span class="tool-tag">Excel</span>
+          <span class="tool-tag">Dashboard Design</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #1a1a2a 0%, #2a2a1a 100%);">🗺️</div>
+      <div class="project-body">
+        <div class="project-category" style="color: #7c6af7;">Public Safety Analytics</div>
+        <div class="project-title">Crime Data Analysis — Los Angeles</div>
+        <p class="project-desc">Developed interactive dashboards in Tableau and Power BI to visualise crime trends and geographic hotspots in Los Angeles, enabling clearer insight into public safety patterns.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Tableau</span>
+          <span class="tool-tag">Power BI</span>
+          <span class="tool-tag">Geospatial</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #1a2a2a 0%, #1a1a3a 100%);">📚</div>
+      <div class="project-body">
+        <div class="project-category" style="color: #6af7c2;">Sales Analytics</div>
+        <div class="project-title">Bookstore Performance & Publisher Insights Q1 2024</div>
+        <p class="project-desc">Analysed bookstore sales data using Tableau and Excel to identify top-performing genres and highlight areas for increased marketing and inventory focus.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Tableau</span>
+          <span class="tool-tag">Excel</span>
+          <span class="tool-tag">KPI Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb" style="background: linear-gradient(135deg, #2a1a2a 0%, #1a2a1a 100%);">🛒</div>
+      <div class="project-body">
+        <div class="project-category" style="color: #f7c26a;">SQL & Python</div>
+        <div class="project-title">Sales Insights Analysis</div>
+        <p class="project-desc">Used Python and SQL to analyse customer demand and sales trends, identifying potential growth opportunities and actionable business insights from structured datasets.</p>
+        <div class="project-tools">
+          <span class="tool-tag">Python</span>
+          <span class="tool-tag">SQL</span>
+          <span class="tool-tag">Data Analysis</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="fade-in">
+  <div class="section-label">Work History</div>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">May 2025 – Mar 2026</div>
+      <div class="timeline-role">Professional Data Analyst Training</div>
+      <div class="timeline-company">Newto Training · Birmingham, UK</div>
+      <ul class="timeline-points">
+        <li>Completed certifications in Power BI, CompTIA Data+, Azure AI-900, and DataCamp SQL & Data Analyst Associate</li>
+        <li>Delivered end-to-end projects in Tableau, Power BI, Python, and SQL covering sales, insurance, and crime analytics</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Aug 2019 – Dec 2024</div>
+      <div class="timeline-role">Test Engineer</div>
+      <div class="timeline-company">NEC Corporation India Pvt Ltd · Chennai, India</div>
+      <ul class="timeline-points">
+        <li>Validated ~1.3M rows across CSV, Excel, and XML in IBM DataStage (IADB ETL); reduced manual validation effort by ~25%</li>
+        <li>Led ISO 20022 validation for cash, trade finance, and securities messages — identified 50+ critical defects ensuring SWIFT compliance</li>
+        <li>Reported 500+ defects (200+ critical P1), reducing defect escape rates by ~30%; authored 2,500+ test cases</li>
+        <li>Sole ownership of SMTB Trade Entry module across 5 release cycles — zero defect leakage, 80%+ requirements coverage</li>
+        <li>Received the 'Kudos' Award multiple times for outstanding delivery and data quality contribution</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">Apr 2018 – Jul 2019</div>
+      <div class="timeline-role">Junior Software Tester</div>
+      <div class="timeline-company">Val Genesis (I) Pvt Ltd · Chennai, India</div>
+      <ul class="timeline-points">
+        <li>Validated 8+ application modules against 21 CFR Part 11 compliance standards, preventing 30+ compliance issues from production</li>
+        <li>Executed 800+ manual test cases; identified 100+ defects, contributing to a ~40% reduction in post-deployment issues</li>
+        <li>Managed 160 client support tickets over 7 months with 100% SLA compliance — zero escalations</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="fade-in">
+  <div class="section-label">Credentials</div>
+  <h2 class="section-title">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div>
+        <div class="cert-name">Microsoft Azure Fundamentals AI-900</div>
+        <div class="cert-date">Mar 2026</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📊</div>
+      <div>
+        <div class="cert-name">CompTIA Data+</div>
+        <div class="cert-date">Feb 2026</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📉</div>
+      <div>
+        <div class="cert-name">Microsoft Power BI Data Analyst Associate</div>
+        <div class="cert-date">Dec 2025</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🗄️</div>
+      <div>
+        <div class="cert-name">DataCamp SQL Associate</div>
+        <div class="cert-date">Jul 2025</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🔍</div>
+      <div>
+        <div class="cert-name">DataCamp Data Analyst Associate</div>
+        <div class="cert-date">Jul 2025</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🧠</div>
+      <div>
+        <div class="cert-name">IBM Cognos Business Intelligence</div>
+        <div class="cert-date">2015 · IBM Career Education</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content: center;">Let's Connect</div>
+    <h2 class="section-title" style="margin-bottom: 1rem;">Open to Data Analyst Opportunities</h2>
+    <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.7;">Based in Birmingham, commutable to London. I'd love to hear about roles where I can apply my data validation expertise and analytical skills to make a real impact.</p>
+    <div class="contact-links">
+      <a href="mailto:Mahalakshmi.k1810@gmail.com" class="contact-link">
+        <span>✉️</span> Mahalakshmi.k1810@gmail.com
+      </a>
+      <a href="tel:+447900424857" class="contact-link">
+        <span>📞</span> +44 7900 424 857
+      </a>
+      <div class="contact-link" style="cursor: default;">
+        <span>📍</span> Birmingham, UK
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Mahalakshmi Kumar · Data Analyst Portfolio
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
