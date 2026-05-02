@@ -1,568 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Mahalakshmi Kumar — Data Analyst</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --card: #1a1a26;
-    --border: #2a2a3d;
-    --accent: #7c6af7;
-    --accent2: #f7c26a;
-    --accent3: #6af7c2;
-    --text: #e8e8f0;
-    --muted: #8888aa;
-    --white: #ffffff;
-  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --surface2: #1e2230;
+    --border: #2a2f3e;
+    --accent: #4f8ef7;
+    --accent2: #7c6af7;
+    --text: #e8eaf0;
+    --muted: #8891a8;
+    --tag-bg: #1e2a42;
+    --tag-color: #7aadff;
+    --radius: 14px;
+  }
 
   html { scroll-behavior: smooth; }
 
   body {
+    font-family: 'DM Sans', sans-serif;
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
+    line-height: 1.65;
+    font-size: 15px;
   }
 
   /* NAV */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(10,10,15,0.85);
-    backdrop-filter: blur(16px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+    background: rgba(13,15,20,0.85);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
   .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.02em;
-  }
-  .nav-logo span { color: var(--accent); }
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--muted);
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--accent);
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.875rem;
+    font-weight: 500; letter-spacing: 0.03em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
 
   /* HERO */
   .hero {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 100px 8% 60px;
+    position: relative; overflow: hidden;
   }
   .hero::before {
     content: '';
-    position: absolute;
-    top: -200px; right: -200px;
+    position: absolute; top: -200px; right: -200px;
     width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(124,106,247,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -100px; left: 200px;
-    width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(106,247,194,0.08) 0%, transparent 70%);
-    pointer-events: none;
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25);
+    color: var(--accent); border-radius: 100px;
+    padding: 6px 16px; font-size: 0.8rem; font-weight: 500; margin-bottom: 2rem;
   }
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(124,106,247,0.12);
-    border: 1px solid rgba(124,106,247,0.3);
-    border-radius: 100px;
-    padding: 0.4rem 1rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.6s ease both;
-  }
-  .hero-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
   .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    font-weight: 900;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
     line-height: 1.1;
-    color: var(--white);
-    animation: fadeUp 0.6s 0.1s ease both;
+    margin-bottom: 1.2rem;
+    max-width: 700px;
   }
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p {
+    color: var(--muted); font-size: 1.05rem;
+    max-width: 560px; margin-bottom: 2.5rem; font-weight: 300;
   }
-  .hero-sub {
-    margin-top: 1.5rem;
-    color: var(--muted);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    max-width: 480px;
-    animation: fadeUp 0.6s 0.2s ease both;
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 8px;
+    font-size: 0.875rem; font-weight: 500; text-decoration: none;
+    transition: all 0.2s; cursor: pointer; border: none;
   }
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2.5rem;
-    animation: fadeUp 0.6s 0.3s ease both;
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #3a7de8; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* STATS */
+  .stats {
+    display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 4rem;
+    padding-top: 3rem; border-top: 1px solid var(--border);
+    width: 100%; max-width: 700px;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 0.85rem 2rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.2s, box-shadow 0.2s;
+  .stat-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; color: var(--text); line-height: 1;
   }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(124,106,247,0.35);
-  }
-  .btn-outline {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 0.85rem 2rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    animation: fadeUp 0.6s 0.4s ease both;
-  }
-  .stat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.8rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
-  }
-  .stat-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
-  }
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-  .stat-card:hover::before { opacity: 1; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.4rem;
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1;
-  }
-  .stat-num span { color: var(--accent); }
-  .stat-label {
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-weight: 400;
-    line-height: 1.4;
-  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
 
   /* SECTIONS */
-  section {
-    padding: 6rem 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  section { padding: 90px 8%; }
   .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-  .section-label::before {
-    content: '';
-    width: 2rem; height: 1px;
-    background: var(--accent);
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem;
   }
   .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.2;
-    margin-bottom: 3rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    margin-bottom: 3rem; max-width: 600px;
   }
 
   /* SKILLS */
-  .skills-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
+  #skills { background: var(--surface); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .skill-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
   }
-  .skill-group {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: border-color 0.2s;
-  }
-  .skill-group:hover { border-color: var(--accent); }
-  .skill-group-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent2);
-    margin-bottom: 1.2rem;
-  }
-  .skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .pill {
-    background: rgba(124,106,247,0.1);
-    border: 1px solid rgba(124,106,247,0.2);
-    color: var(--text);
-    border-radius: 100px;
-    padding: 0.35rem 0.9rem;
-    font-size: 0.8rem;
-    font-weight: 400;
-    font-family: 'DM Mono', monospace;
-    transition: background 0.2s, border-color 0.2s;
-  }
-  .pill:hover {
-    background: rgba(124,106,247,0.2);
-    border-color: var(--accent);
+  .skill-card h4 { font-size: 0.8rem; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: var(--tag-bg); color: var(--tag-color);
+    border-radius: 6px; padding: 3px 10px;
+    font-size: 0.78rem; font-weight: 500;
   }
 
   /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 2rem;
-  }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
   .project-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-    display: flex;
-    flex-direction: column;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.8rem;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
   }
-  .project-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent);
-    box-shadow: 0 16px 48px rgba(124,106,247,0.12);
-  }
-  .project-thumb {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-body {
-    padding: 1.8rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  .project-category {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-  }
-  .project-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.3;
-    margin-bottom: 0.8rem;
-  }
-  .project-desc {
-    color: var(--muted);
-    font-size: 0.88rem;
-    line-height: 1.7;
-    flex: 1;
-  }
-  .project-tools {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 1.2rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--border);
-  }
-  .tool-tag {
-    background: rgba(247,194,106,0.1);
-    border: 1px solid rgba(247,194,106,0.2);
-    color: var(--accent2);
-    border-radius: 4px;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.72rem;
-    font-weight: 500;
-    font-family: 'DM Mono', monospace;
-  }
-
-  /* EXPERIENCE TIMELINE */
-  .timeline {
-    position: relative;
-    padding-left: 2rem;
-  }
-  .timeline::before {
+  .project-card::after {
     content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--accent), transparent);
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(79,142,247,0.04) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.2s;
   }
-  .timeline-item {
-    position: relative;
-    margin-bottom: 3rem;
-    padding-left: 2.5rem;
+  .project-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(79,142,247,0.1); }
+  .project-card:hover::after { opacity: 1; }
+  .project-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .project-type { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+  .project-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.7rem; color: var(--text); }
+  .project-card p { font-size: 0.875rem; color: var(--muted); margin-bottom: 1.2rem; line-height: 1.6; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .project-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--accent); font-size: 0.8rem; font-weight: 500;
+    margin-top: 1rem; opacity: 0; transform: translateX(-4px); transition: all 0.2s;
   }
-  .timeline-dot {
-    position: absolute;
-    left: -2.6rem;
-    top: 0.3rem;
-    width: 12px; height: 12px;
-    background: var(--accent);
-    border-radius: 50%;
-    border: 2px solid var(--bg);
-    box-shadow: 0 0 0 3px rgba(124,106,247,0.3);
-  }
-  .timeline-date {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    margin-bottom: 0.4rem;
-    font-family: 'DM Mono', monospace;
-  }
-  .timeline-role {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--white);
-  }
-  .timeline-company {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-  }
-  .timeline-points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .timeline-points li {
-    color: var(--muted);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    padding-left: 1.2rem;
-    position: relative;
-  }
-  .timeline-points li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent3);
-    font-size: 0.75rem;
-  }
+  .project-card:hover .project-cta { opacity: 1; transform: translateX(0); }
 
-  /* CERTIFICATIONS */
-  .certs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.2rem;
+  /* EXPERIENCE */
+  #experience { background: var(--surface); }
+  .timeline { display: flex; flex-direction: column; gap: 2rem; max-width: 700px; }
+  .timeline-item { display: flex; gap: 1.5rem; }
+  .timeline-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); margin-top: 6px; flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(79,142,247,0.15);
   }
+  .timeline-date { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.3rem; font-weight: 500; }
+  .timeline-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem; }
+  .timeline-company { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.8rem; }
+  .timeline-body { font-size: 0.875rem; color: var(--muted); }
+  .timeline-body li { margin-bottom: 0.4rem; padding-left: 1em; text-indent: -1em; }
+  .timeline-body li::before { content: '→ '; color: var(--accent); }
+
+  /* CERTS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
   .cert-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.4rem 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    transition: border-color 0.2s, transform 0.2s;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
   }
-  .cert-card:hover {
-    border-color: var(--accent3);
-    transform: translateX(4px);
-  }
-  .cert-icon {
-    font-size: 1.8rem;
-    flex-shrink: 0;
-  }
-  .cert-name {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-  }
-  .cert-date {
-    font-size: 0.72rem;
-    color: var(--accent3);
-    font-family: 'DM Mono', monospace;
-    margin-top: 0.3rem;
-  }
+  .cert-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .cert-name { font-size: 0.875rem; font-weight: 500; }
+  .cert-date { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
 
   /* CONTACT */
-  .contact-section {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 6rem 4rem;
-    text-align: center;
-  }
-  .contact-inner { max-width: 600px; margin: 0 auto; }
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-  }
+  #contact { background: var(--surface); text-align: center; }
+  #contact .section-title { margin: 0 auto 1rem; }
+  #contact p { color: var(--muted); max-width: 480px; margin: 0 auto 2.5rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
   .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 0.9rem 1.6rem;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); border-radius: 8px; padding: 10px 20px;
+    font-size: 0.875rem; font-weight: 500; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
   }
-  .contact-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-location { color: var(--muted); font-size: 0.85rem; margin-top: 1rem; }
 
-  /* FOOTER */
   footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--muted);
-    font-size: 0.8rem;
+    text-align: center; padding: 2rem;
     border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 0.8rem;
   }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.75); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s;
   }
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    width: 100%; max-width: 720px;
+    max-height: 88vh; overflow-y: auto;
+    padding: 2.5rem;
+    transform: translateY(20px); transition: transform 0.25s;
+    position: relative;
   }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); border-radius: 8px;
+    width: 34px; height: 34px; font-size: 1.1rem;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: color 0.2s, border-color 0.2s;
   }
-
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { padding: 6rem 1.5rem 3rem; }
-    .hero-grid { grid-template-columns: 1fr; }
-    section { padding: 4rem 1.5rem; }
-    .contact-section { padding: 4rem 1.5rem; }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
-  }
+  .modal-close:hover { color: var(--text); border-color: var(--accent); }
+  .modal-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+  .modal-type { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .modal h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin-bottom: 1rem; }
+  .modal-section { margin-top: 1.5rem; }
+  .modal-section h4 { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.7rem; }
+  .modal-section p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+  .modal-section ul { list-style: none; padding: 0; }
+  .modal-section ul li { font-size: 0.9rem; color: var(--muted); padding: 0.35rem 0 0.35rem 1.2em; text-indent: -1.2em; border-bottom: 1px solid var(--border); }
+  .modal-section ul li:last-child { border-bottom: none; }
+  .modal-section ul li::before { content: '→ '; color: var(--accent); }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+  .modal-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">MK<span>.</span></div>
+  <a href="#" class="nav-logo">MK.</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -573,306 +277,467 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero" id="about">
-  <div class="hero-grid">
-    <div>
-      <div class="hero-tag">Available for Data Analyst Roles</div>
-      <h1>Mahalakshmi<br><em>Kumar</em></h1>
-      <p class="hero-sub">Data-focused professional with 6+ years in data validation, ETL testing, and QA — now applying deep analytical skills in Python, SQL, Power BI & Tableau to deliver business insights that drive decisions.</p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="#contact" class="btn-outline">Get in Touch</a>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-card">
-        <div class="stat-num">6<span>+</span></div>
-        <div class="stat-label">Years in Data & QA</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">1.3<span>M</span></div>
-        <div class="stat-label">Rows Validated (IADB ETL)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">500<span>+</span></div>
-        <div class="stat-label">Defects Identified & Reported</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">100<span>%</span></div>
-        <div class="stat-label">SLA Compliance (160 tickets)</div>
-      </div>
-    </div>
+<section class="hero" id="about">
+  <div class="hero-badge">Available for Data Analyst Roles</div>
+  <h1>Mahalakshmi <em>Kumar</em></h1>
+  <p>Data-focused professional with 6+ years in data validation, ETL testing, and QA — now applying deep analytical skills in Python, SQL, Power BI &amp; Tableau to deliver business insights that drive decisions.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Get in Touch</a>
   </div>
-</div>
+  <div class="stats">
+    <div><div class="stat-val">6+</div><div class="stat-label">Years in Data &amp; QA</div></div>
+    <div><div class="stat-val">1.3M</div><div class="stat-label">Rows Validated (IADB ETL)</div></div>
+    <div><div class="stat-val">500+</div><div class="stat-label">Defects Identified &amp; Reported</div></div>
+    <div><div class="stat-val">100%</div><div class="stat-label">SLA Compliance (160 tickets)</div></div>
+  </div>
+</section>
 
 <!-- SKILLS -->
-<section id="skills" class="fade-in">
+<section id="skills">
   <div class="section-label">Technical Skills</div>
-  <h2 class="section-title">Tools & Technologies</h2>
-  <div class="skills-wrapper">
-    <div class="skill-group">
-      <div class="skill-group-title">Languages & Analysis</div>
-      <div class="skill-pills">
-        <span class="pill">Python</span>
-        <span class="pill">SQL</span>
-        <span class="pill">MySQL</span>
-        <span class="pill">Excel</span>
+  <div class="section-title">Tools &amp; Technologies</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h4>Languages &amp; Analysis</h4>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">MySQL</span><span class="tag">Excel</span>
       </div>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Visualisation & BI</div>
-      <div class="skill-pills">
-        <span class="pill">Power BI</span>
-        <span class="pill">Tableau</span>
-        <span class="pill">IBM Cognos</span>
+    <div class="skill-card">
+      <h4>Visualisation &amp; BI</h4>
+      <div class="skill-tags">
+        <span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">IBM Cognos</span>
       </div>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">ETL & Data Quality</div>
-      <div class="skill-pills">
-        <span class="pill">IBM DataStage</span>
-        <span class="pill">ETL Testing</span>
-        <span class="pill">Data Validation</span>
-        <span class="pill">JIRA</span>
+    <div class="skill-card">
+      <h4>ETL &amp; Data Quality</h4>
+      <div class="skill-tags">
+        <span class="tag">IBM DataStage</span><span class="tag">ETL Testing</span><span class="tag">Data Validation</span><span class="tag">JIRA</span>
       </div>
     </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Methodologies</div>
-      <div class="skill-pills">
-        <span class="pill">Agile / Scrum</span>
-        <span class="pill">ISO 20022</span>
-        <span class="pill">21 CFR Part 11</span>
-        <span class="pill">RTM</span>
+    <div class="skill-card">
+      <h4>Methodologies</h4>
+      <div class="skill-tags">
+        <span class="tag">Agile / Scrum</span><span class="tag">ISO 20022</span><span class="tag">21 CFR Part 11</span><span class="tag">RTM</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="fade-in">
+<section id="projects">
   <div class="section-label">Portfolio</div>
-  <h2 class="section-title">Featured Projects</h2>
+  <div class="section-title">Featured Projects</div>
   <div class="projects-grid">
 
-    <div class="project-card">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #1a1a40 0%, #2d1a4a 100%);">📊</div>
-      <div class="project-body">
-        <div class="project-category" style="color: #7c6af7;">Data Visualisation</div>
-        <div class="project-title">Retail Sales Performance Analysis</div>
-        <p class="project-desc">Analysed retail sales data to uncover performance trends, identify top-performing categories, and surface actionable business insights through interactive dashboards.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Power BI</span>
-          <span class="tool-tag">Excel</span>
-          <span class="tool-tag">SQL</span>
-        </div>
+    <div class="project-card" onclick="openModal('retail')">
+      <div class="project-icon">📊</div>
+      <div class="project-type">Data Visualisation · Power BI</div>
+      <h3>Retail Sales Performance Analysis</h3>
+      <p>Analysed retail sales data to uncover performance trends, identify top-performing categories, and surface actionable business insights through interactive dashboards.</p>
+      <div class="project-tags">
+        <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Excel</span><span class="tag">SQL</span>
       </div>
+      <div class="project-cta">View Details →</div>
     </div>
 
-    <div class="project-card">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #1a2a1a 0%, #1a3a2a 100%);">🐍</div>
-      <div class="project-body">
-        <div class="project-category" style="color: #6af7c2;">Python Analysis</div>
-        <div class="project-title">Insurance Charges Analysis</div>
-        <p class="project-desc">Used Python (pandas, seaborn, regression) to analyse factors influencing insurance costs — age, BMI, smoking status — identifying key pricing drivers and delivering statistically grounded recommendations.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Python</span>
-          <span class="tool-tag">Pandas</span>
-          <span class="tool-tag">Seaborn</span>
-          <span class="tool-tag">Regression</span>
-        </div>
+    <div class="project-card" onclick="openModal('insurance')">
+      <div class="project-icon">🐍</div>
+      <div class="project-type">Python Analysis</div>
+      <h3>Insurance Charges Analysis</h3>
+      <p>Used Python to analyse factors influencing insurance costs — age, BMI, smoking status — identifying key pricing drivers and delivering statistically grounded recommendations.</p>
+      <div class="project-tags">
+        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Seaborn</span><span class="tag">Matplotlib</span>
       </div>
+      <div class="project-cta">View Details →</div>
     </div>
 
-    <div class="project-card">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #2a1a1a 0%, #3a2a1a 100%);">📈</div>
-      <div class="project-body">
-        <div class="project-category" style="color: #f7c26a;">Tableau Dashboard</div>
-        <div class="project-title">Coffee Chain Sales & Profit Analysis 2021–2025</div>
-        <p class="project-desc">Built Tableau dashboards to analyse revenue, profit trends, and regional performance across 5 years, enabling data-driven business decision-making for the leadership team.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Tableau</span>
-          <span class="tool-tag">Excel</span>
-          <span class="tool-tag">Dashboard Design</span>
-        </div>
+    <div class="project-card" onclick="openModal('coffee')">
+      <div class="project-icon">📈</div>
+      <div class="project-type">Tableau Dashboard</div>
+      <h3>Coffee Chain Sales &amp; Profit Analysis</h3>
+      <p>Built Tableau dashboards to analyse revenue, profit trends, and regional performance across 4 years, enabling data-driven business decision-making for the leadership team.</p>
+      <div class="project-tags">
+        <span class="tag">Tableau</span><span class="tag">Excel</span><span class="tag">Dashboard Design</span>
       </div>
+      <div class="project-cta">View Details →</div>
     </div>
 
-    <div class="project-card">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #1a1a2a 0%, #2a2a1a 100%);">🗺️</div>
-      <div class="project-body">
-        <div class="project-category" style="color: #7c6af7;">Public Safety Analytics</div>
-        <div class="project-title">Crime Data Analysis — Los Angeles</div>
-        <p class="project-desc">Developed interactive dashboards in Tableau and Power BI to visualise crime trends and geographic hotspots in Los Angeles, enabling clearer insight into public safety patterns.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Tableau</span>
-          <span class="tool-tag">Power BI</span>
-          <span class="tool-tag">Geospatial</span>
-        </div>
+    <div class="project-card" onclick="openModal('crime')">
+      <div class="project-icon">🗺️</div>
+      <div class="project-type">Public Safety Analytics</div>
+      <h3>Crime Data Analysis — Los Angeles</h3>
+      <p>Developed interactive dashboards in Tableau and Power BI to visualise crime trends and geographic hotspots in Los Angeles, enabling clearer insight into public safety patterns.</p>
+      <div class="project-tags">
+        <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Geospatial</span>
       </div>
+      <div class="project-cta">View Details →</div>
     </div>
 
-    <div class="project-card">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #1a2a2a 0%, #1a1a3a 100%);">📚</div>
-      <div class="project-body">
-        <div class="project-category" style="color: #6af7c2;">Sales Analytics</div>
-        <div class="project-title">Bookstore Performance & Publisher Insights Q1 2024</div>
-        <p class="project-desc">Analysed bookstore sales data using Tableau and Excel to identify top-performing genres and highlight areas for increased marketing and inventory focus.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Tableau</span>
-          <span class="tool-tag">Excel</span>
-          <span class="tool-tag">KPI Analysis</span>
-        </div>
+    <div class="project-card" onclick="openModal('excel')">
+      <div class="project-icon">🚲</div>
+      <div class="project-type">Sales Analytics · Excel</div>
+      <h3>Bike Sales Dashboard</h3>
+      <p>Built a dynamic Excel dashboard analysing 1,000+ customer records to identify regional purchasing patterns and demographic drivers of bike purchases.</p>
+      <div class="project-tags">
+        <span class="tag">Excel</span><span class="tag">Pivot Tables</span><span class="tag">VLOOKUP</span><span class="tag">Dashboard</span>
       </div>
+      <div class="project-cta">View Details →</div>
     </div>
 
-    <div class="project-card">
-      <div class="project-thumb" style="background: linear-gradient(135deg, #2a1a2a 0%, #1a2a1a 100%);">🛒</div>
-      <div class="project-body">
-        <div class="project-category" style="color: #f7c26a;">SQL & Python</div>
-        <div class="project-title">Sales Insights Analysis</div>
-        <p class="project-desc">Used Python and SQL to analyse customer demand and sales trends, identifying potential growth opportunities and actionable business insights from structured datasets.</p>
-        <div class="project-tools">
-          <span class="tool-tag">Python</span>
-          <span class="tool-tag">SQL</span>
-          <span class="tool-tag">Data Analysis</span>
-        </div>
+    <div class="project-card" onclick="openModal('sql')">
+      <div class="project-icon">🛒</div>
+      <div class="project-type">SQL Analysis</div>
+      <h3>Restaurant &amp; Employee SQL Analysis</h3>
+      <p>Wrote 15+ business queries using CTEs, subqueries, and multi-table JOINs to answer pricing, customer order value, and workforce allocation questions.</p>
+      <div class="project-tags">
+        <span class="tag">SQL</span><span class="tag">CTEs</span><span class="tag">JOINs</span><span class="tag">Subqueries</span>
       </div>
+      <div class="project-cta">View Details →</div>
     </div>
 
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="fade-in">
+<section id="experience">
   <div class="section-label">Work History</div>
-  <h2 class="section-title">Experience</h2>
+  <div class="section-title">Experience</div>
   <div class="timeline">
 
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date">May 2025 – Mar 2026</div>
-      <div class="timeline-role">Professional Data Analyst Training</div>
-      <div class="timeline-company">Newto Training · Birmingham, UK</div>
-      <ul class="timeline-points">
-        <li>Completed certifications in Power BI, CompTIA Data+, Azure AI-900, and DataCamp SQL & Data Analyst Associate</li>
-        <li>Delivered end-to-end projects in Tableau, Power BI, Python, and SQL covering sales, insurance, and crime analytics</li>
-      </ul>
+      <div>
+        <div class="timeline-date">May 2025 – Mar 2026</div>
+        <div class="timeline-title">Professional Data Analyst Training</div>
+        <div class="timeline-company">Newto Training · Birmingham, UK</div>
+        <ul class="timeline-body">
+          <li>Completed certifications in Power BI, CompTIA Data+, Azure AI-900, and DataCamp SQL &amp; Data Analyst Associate</li>
+          <li>Delivered 6 end-to-end projects in Tableau, Power BI, Python, and SQL covering sales, insurance, and crime analytics</li>
+        </ul>
+      </div>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date">Aug 2019 – Dec 2024</div>
-      <div class="timeline-role">Test Engineer</div>
-      <div class="timeline-company">NEC Corporation India Pvt Ltd · Chennai, India</div>
-      <ul class="timeline-points">
-        <li>Validated ~1.3M rows across CSV, Excel, and XML in IBM DataStage (IADB ETL); reduced manual validation effort by ~25%</li>
-        <li>Led ISO 20022 validation for cash, trade finance, and securities messages — identified 50+ critical defects ensuring SWIFT compliance</li>
-        <li>Reported 500+ defects (200+ critical P1), reducing defect escape rates by ~30%; authored 2,500+ test cases</li>
-        <li>Sole ownership of SMTB Trade Entry module across 5 release cycles — zero defect leakage, 80%+ requirements coverage</li>
-        <li>Received the 'Kudos' Award multiple times for outstanding delivery and data quality contribution</li>
-      </ul>
+      <div>
+        <div class="timeline-date">Aug 2019 – Dec 2024</div>
+        <div class="timeline-title">Test Engineer</div>
+        <div class="timeline-company">NEC Corporation India Pvt Ltd · Chennai, India</div>
+        <ul class="timeline-body">
+          <li>Validated ~1.3M rows across CSV, Excel, and XML in IBM DataStage (IADB ETL); reduced manual validation effort by ~25%</li>
+          <li>Led ISO 20022 validation for cash, trade finance, and securities messages — identified 50+ critical defects ensuring SWIFT compliance</li>
+          <li>Reported 500+ defects (200+ critical P1), reducing defect escape rates by ~30%; authored 2,500+ test cases</li>
+          <li>Sole ownership of SMTB Trade Entry module across 5 release cycles — zero defect leakage, 80%+ requirements coverage</li>
+          <li>Received the 'Kudos' Award multiple times for outstanding delivery and data quality contribution</li>
+        </ul>
+      </div>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date">Apr 2018 – Jul 2019</div>
-      <div class="timeline-role">Junior Software Tester</div>
-      <div class="timeline-company">Val Genesis (I) Pvt Ltd · Chennai, India</div>
-      <ul class="timeline-points">
-        <li>Validated 8+ application modules against 21 CFR Part 11 compliance standards, preventing 30+ compliance issues from production</li>
-        <li>Executed 800+ manual test cases; identified 100+ defects, contributing to a ~40% reduction in post-deployment issues</li>
-        <li>Managed 160 client support tickets over 7 months with 100% SLA compliance — zero escalations</li>
-      </ul>
+      <div>
+        <div class="timeline-date">Apr 2018 – Jul 2019</div>
+        <div class="timeline-title">Junior Software Tester</div>
+        <div class="timeline-company">Val Genesis (I) Pvt Ltd · Chennai, India</div>
+        <ul class="timeline-body">
+          <li>Validated 8+ application modules against 21 CFR Part 11 compliance standards, preventing 30+ compliance issues from production</li>
+          <li>Executed 800+ manual test cases; identified 100+ defects, contributing to a ~40% reduction in post-deployment issues</li>
+          <li>Managed 160 client support tickets over 7 months with 100% SLA compliance — zero escalations</li>
+        </ul>
+      </div>
     </div>
 
   </div>
 </section>
 
 <!-- CERTIFICATIONS -->
-<section id="certifications" class="fade-in">
+<section id="certifications">
   <div class="section-label">Credentials</div>
-  <h2 class="section-title">Certifications</h2>
+  <div class="section-title">Certifications</div>
   <div class="certs-grid">
-    <div class="cert-card">
-      <div class="cert-icon">☁️</div>
-      <div>
-        <div class="cert-name">Microsoft Azure Fundamentals AI-900</div>
-        <div class="cert-date">Mar 2026</div>
-      </div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">📊</div>
-      <div>
-        <div class="cert-name">CompTIA Data+</div>
-        <div class="cert-date">Feb 2026</div>
-      </div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">📉</div>
-      <div>
-        <div class="cert-name">Microsoft Power BI Data Analyst Associate</div>
-        <div class="cert-date">Dec 2025</div>
-      </div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">🗄️</div>
-      <div>
-        <div class="cert-name">DataCamp SQL Associate</div>
-        <div class="cert-date">Jul 2025</div>
-      </div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">🔍</div>
-      <div>
-        <div class="cert-name">DataCamp Data Analyst Associate</div>
-        <div class="cert-date">Jul 2025</div>
-      </div>
-    </div>
-    <div class="cert-card">
-      <div class="cert-icon">🧠</div>
-      <div>
-        <div class="cert-name">IBM Cognos Business Intelligence</div>
-        <div class="cert-date">2015 · IBM Career Education</div>
-      </div>
-    </div>
+    <div class="cert-card"><div class="cert-icon">☁️</div><div><div class="cert-name">Microsoft Azure Fundamentals AI-900</div><div class="cert-date">Mar 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📊</div><div><div class="cert-name">CompTIA Data+</div><div class="cert-date">Feb 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon">📉</div><div><div class="cert-name">Microsoft Power BI Data Analyst Associate</div><div class="cert-date">Dec 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🗄️</div><div><div class="cert-name">DataCamp SQL Associate</div><div class="cert-date">Jul 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🔍</div><div><div class="cert-name">DataCamp Data Analyst Associate</div><div class="cert-date">Jul 2025</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🧠</div><div><div class="cert-name">IBM Cognos Business Intelligence</div><div class="cert-date">2015 · IBM Career Education</div></div></div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<div class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="section-label" style="justify-content: center;">Let's Connect</div>
-    <h2 class="section-title" style="margin-bottom: 1rem;">Open to Data Analyst Opportunities</h2>
-    <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.7;">Based in Birmingham, commutable to London. I'd love to hear about roles where I can apply my data validation expertise and analytical skills to make a real impact.</p>
-    <div class="contact-links">
-      <a href="mailto:Mahalakshmi.k1810@gmail.com" class="contact-link">
-        <span>✉️</span> Mahalakshmi.k1810@gmail.com
-      </a>
-      <a href="tel:+447900424857" class="contact-link">
-        <span>📞</span> +44 7900 424 857
-      </a>
-      <div class="contact-link" style="cursor: default;">
-        <span>📍</span> Birmingham, UK
-      </div>
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <div class="section-title">Open to Data Analyst Opportunities</div>
+  <p>Open to hybrid roles across the Midlands and London. I'd love to hear about roles where I can apply my data validation expertise and analytical skills to make a real impact.</p>
+  <div class="contact-links">
+    <a href="mailto:Mahalakshmi.k1810@gmail.com" class="contact-link">✉️ Mahalakshmi.k1810@gmail.com</a>
+    <a href="tel:+447900424857" class="contact-link">📞 +44 7900 424 857</a>
+  </div>
+  <div class="contact-location">📍 Birmingham, UK</div>
+</section>
+
+<footer>© 2026 Mahalakshmi Kumar · Data Analyst Portfolio</footer>
+
+<!-- ===================== MODALS ===================== -->
+
+<!-- RETAIL SALES -->
+<div class="modal-overlay" id="modal-retail" onclick="closeOnOverlay(event, 'retail')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('retail')">✕</button>
+    <div class="modal-icon">📊</div>
+    <div class="modal-type">Data Visualisation · Power BI</div>
+    <h2>Retail Sales Performance Analysis</h2>
+    <div class="modal-tags">
+      <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Excel</span><span class="tag">SQL</span>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <h4>Project Overview</h4>
+      <p>Explored transaction-level retail sales data in Power BI Desktop to generate insights for senior management. The analysis focuses on understanding overall sales and profitability, identifying time-based trends, comparing performance across regions and product categories, and assessing how discount levels influence profit.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Dataset</h4>
+      <p>Transaction-level retail dataset covering 2021–2023 with fields including OrderID, OrderDate, ShipMode, CustomerSegment, geographic data (Country, State, City, Region), product details (Category, SubCategory), Quantity, UnitPrice, Discount, and Unit_Cost.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Data Preparation</h4>
+      <ul>
+        <li>Resolved OrderDate import issue — converted text column to Date using English (UK) locale in Power Query to ensure correct time-based analysis</li>
+        <li>Identified high-discount transactions (20–30%) as outliers; retained all rows and flagged their effect in discount-impact analysis</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>DAX Measures Created</h4>
+      <ul>
+        <li>Total Revenue = Quantity × UnitPrice × (1 − Discount)</li>
+        <li>Total Cost = Quantity × Unit_Cost</li>
+        <li>Total Profit = Total Revenue − Total Cost</li>
+        <li>Profit Margin % = Total Profit ÷ Total Revenue (returns BLANK on zero revenue to avoid misleading values)</li>
+        <li>Total Quantity Sold = SUM of Quantity</li>
+        <li>Number of Orders = DISTINCTCOUNT of OrderID</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Key Insights</h4>
+      <ul>
+        <li>0% and 1–10% discount bands deliver the highest profit and strongest margins — the safest pricing zones</li>
+        <li>Profit margin drops sharply in the 21–30% discount band, indicating aggressive discounting erodes profitability</li>
+        <li>Subcategories Chairs, Machines, and Furnishings show higher sensitivity to discounting and require pricing controls</li>
+      </ul>
     </div>
   </div>
 </div>
 
-<footer>
-  © 2026 Mahalakshmi Kumar · Data Analyst Portfolio
-</footer>
+<!-- INSURANCE -->
+<div class="modal-overlay" id="modal-insurance" onclick="closeOnOverlay(event, 'insurance')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('insurance')">✕</button>
+    <div class="modal-icon">🐍</div>
+    <div class="modal-type">Python Analysis</div>
+    <h2>Insurance Charges Analysis</h2>
+    <div class="modal-tags">
+      <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Seaborn</span><span class="tag">Matplotlib</span><span class="tag">NumPy</span>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <h4>Project Overview</h4>
+      <p>Analysed 2,000+ insurance records to identify which demographic and health factors most strongly influence insurance charges. The goal was to provide actionable pricing insights for a health insurance company's underwriting and customer advisory teams.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Dataset</h4>
+      <p>2,000+ records with fields: Age, Sex, BMI, Children, Smoker status, Region, and Charges. Dataset sourced from a real insurance dataset commonly used in actuarial analysis.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Methodology</h4>
+      <ul>
+        <li>Imported and inspected data using Pandas — checked dtypes, missing values, and descriptive statistics</li>
+        <li>Cleaned dataset: removed rows with zero or negative charges and invalid age entries</li>
+        <li>Engineered new features: BMI Category (Underweight / Normal / Overweight / Obese) and Age Group (Young / Middle-aged / Senior)</li>
+        <li>Created Matplotlib visualisations: bar chart (avg charges by region), line chart (avg charges by age), pie chart (smoker vs non-smoker)</li>
+        <li>Created Seaborn visualisations: histogram (charge distribution), boxplot (smoker vs non-smoker charges), scatter plot (BMI vs charges), correlation heatmap</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Key Findings</h4>
+      <ul>
+        <li>Smoking status is the single strongest predictor of insurance charges — smokers pay significantly more across all age groups and BMI categories</li>
+        <li>Charges increase consistently with age, particularly for smokers in the Senior (60+) age group</li>
+        <li>Obese individuals who smoke represent the highest-risk and highest-cost segment</li>
+        <li>Regional variation exists but is secondary to smoking status and BMI as cost drivers</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- COFFEE -->
+<div class="modal-overlay" id="modal-coffee" onclick="closeOnOverlay(event, 'coffee')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('coffee')">✕</button>
+    <div class="modal-icon">📈</div>
+    <div class="modal-type">Tableau Dashboard</div>
+    <h2>Coffee Chain Sales &amp; Profit Analysis</h2>
+    <div class="modal-tags">
+      <span class="tag">Tableau</span><span class="tag">Excel</span><span class="tag">Dashboard Design</span><span class="tag">Business Analysis</span>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <h4>Project Overview</h4>
+      <p>Designed a multi-page Tableau dashboard analysing £130M revenue across 4 years for a coffee chain. The dashboard was presented to senior stakeholders to surface actionable growth drivers and strategic recommendations.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Dashboard Structure</h4>
+      <ul>
+        <li>Page 1 — Executive summary: total revenue, total profit, and year-on-year trend lines</li>
+        <li>Page 2 — Regional performance: geographic breakdown identifying underperforming markets</li>
+        <li>Page 3 — Product analysis: revenue and margin by product category and sub-category</li>
+        <li>Page 4 — Discount impact: correlation between discount depth and profit margin erosion</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Key Insights</h4>
+      <ul>
+        <li>Identified 3 quantified growth drivers including regional underperformance and discount erosion patterns</li>
+        <li>Certain regions consistently underperformed revenue targets — flagged for targeted marketing or operational review</li>
+        <li>Discount strategies in specific product lines were eroding margins without proportionate volume uplift</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CRIME -->
+<div class="modal-overlay" id="modal-crime" onclick="closeOnOverlay(event, 'crime')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('crime')">✕</button>
+    <div class="modal-icon">🗺️</div>
+    <div class="modal-type">Public Safety Analytics</div>
+    <h2>Crime Data Analysis — Los Angeles</h2>
+    <div class="modal-tags">
+      <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Geospatial</span><span class="tag">Data Visualisation</span>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <h4>Project Overview</h4>
+      <p>Developed interactive dashboards in both Tableau and Power BI to visualise crime trends and geographic hotspots across Los Angeles. The project enables pattern analysis across time, location, and crime category for public safety insight.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Analysis Dimensions</h4>
+      <ul>
+        <li>Time-based trends: crime frequency by hour of day, day of week, and month</li>
+        <li>Geographic hotspots: crime density mapping across LA districts and neighbourhoods</li>
+        <li>Crime category breakdown: violent crime, property crime, and other offence classifications</li>
+        <li>Year-on-year comparison of crime volumes and category shifts</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Tools Used</h4>
+      <ul>
+        <li>Tableau — used for geospatial mapping and interactive hotspot visualisation</li>
+        <li>Power BI — used for time-series trend analysis and category filtering dashboards</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- EXCEL / BIKE SALES -->
+<div class="modal-overlay" id="modal-excel" onclick="closeOnOverlay(event, 'excel')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('excel')">✕</button>
+    <div class="modal-icon">🚲</div>
+    <div class="modal-type">Sales Analytics · Excel</div>
+    <h2>Bike Sales Dashboard</h2>
+    <div class="modal-tags">
+      <span class="tag">Excel</span><span class="tag">Pivot Tables</span><span class="tag">VLOOKUP</span><span class="tag">INDEX MATCH</span><span class="tag">COUNTIFS</span>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <h4>Project Overview</h4>
+      <p>Built a dynamic Excel dashboard analysing 1,000+ customer records to understand what drives bike purchases across regions, income levels, and demographic segments. The analysis was designed to inform regional sales targeting.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Technical Approach</h4>
+      <ul>
+        <li>Used VLOOKUP and INDEX MATCH to cross-reference customer and sales data across multiple sheets</li>
+        <li>Built COUNTIFS formulas to segment purchase behaviour by region, gender, and income band</li>
+        <li>Created Pivot Tables to summarise purchases by region, age group, and commute distance</li>
+        <li>Designed an interactive dashboard with slicers for dynamic filtering</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Key Findings</h4>
+      <ul>
+        <li>Europe (123 purchases) significantly outperformed Pacific (76 purchases) — suggesting stronger demand or better market fit in European markets</li>
+        <li>Middle-aged customers in mid-income brackets represented the highest-converting demographic segment</li>
+        <li>Short commute distances (0–1 miles) correlated with higher bike purchase rates — purchase was lifestyle, not purely commute-driven</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SQL -->
+<div class="modal-overlay" id="modal-sql" onclick="closeOnOverlay(event, 'sql')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('sql')">✕</button>
+    <div class="modal-icon">🛒</div>
+    <div class="modal-type">SQL Analysis</div>
+    <h2>Restaurant &amp; Employee SQL Analysis</h2>
+    <div class="modal-tags">
+      <span class="tag">SQL</span><span class="tag">CTEs</span><span class="tag">Window Functions</span><span class="tag">Multi-table JOINs</span><span class="tag">Subqueries</span>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <h4>Project Overview</h4>
+      <p>Wrote 15+ business SQL queries across two datasets — a restaurant menu/orders dataset and an employee/department dataset — to answer real-world pricing, customer, and workforce questions using advanced SQL techniques.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Restaurant Dataset — Business Questions Answered</h4>
+      <ul>
+        <li>How many items are on the menu, and what are the min/max prices?</li>
+        <li>How many luxury items exist, and how many items per category?</li>
+        <li>What is the average price per category?</li>
+        <li>Which items are priced below the average menu price? (Subquery)</li>
+        <li>Which customers have orders greater than $40, and what did they order? (JOIN + filter)</li>
+        <li>Who placed the highest-value order? (CTE approach)</li>
+        <li>Orders placed in Q1 (Jan–Mar) with delivery status classification (CTE + CASE)</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Employee Dataset — Business Questions Answered</h4>
+      <ul>
+        <li>List employees with their department names (INNER JOIN — valid departments only)</li>
+        <li>All employees including those without a department (LEFT JOIN)</li>
+        <li>All departments including those with no employees (RIGHT JOIN)</li>
+        <li>Employees not assigned to any department (LEFT JOIN + NULL filter)</li>
+        <li>Departments with no employees assigned (RIGHT JOIN + NULL filter)</li>
+        <li>Department name with employee headcount (GROUP BY + COUNT)</li>
+        <li>Employees in the IT department (subquery filter)</li>
+        <li>Employees with no department or non-existent department (UNION / FULL OUTER JOIN)</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <script>
-  // Scroll fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  function openModal(id) {
+    document.getElementById('modal-' + id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById('modal-' + id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeOnOverlay(e, id) {
+    if (e.target === e.currentTarget) closeModal(id);
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+        m.classList.remove('open');
+      });
+      document.body.style.overflow = '';
+    }
+  });
 </script>
 </body>
 </html>
