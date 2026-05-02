@@ -399,6 +399,17 @@
       <div class="project-cta">View Details →</div>
     </div>
 
+    <div class="project-card" onclick="openModal('salesvalidation')">
+      <div class="project-icon">✅</div>
+      <div class="project-type">Data Validation · Power BI</div>
+      <h3>Sales Data Validation &amp; Analysis</h3>
+      <p>Validated and analysed sales data using Power BI, ensuring data accuracy and surfacing business insights through quality-checked interactive dashboards.</p>
+      <div class="project-tags">
+        <span class="tag">Power BI</span><span class="tag">Data Validation</span><span class="tag">DAX</span>
+      </div>
+      <div class="project-cta">View Details →</div>
+    </div>
+
   </div>
 </section>
 
@@ -529,6 +540,10 @@
         <li>Profit margin drops sharply in the 21–30% discount band, indicating aggressive discounting erodes profitability</li>
         <li>Subcategories Chairs, Machines, and Furnishings show higher sensitivity to discounting and require pricing controls</li>
       </ul>
+    </div>
+    <div class="modal-section">
+      <h4>View Full Report</h4>
+      <p><a href="https://github.com/MahalakshmiKumar-Data/MahalakshmiKumar-Data.github.io/blob/main/Retail%20Analysis.pdf" target="_blank" rel="noopener" style="color: var(--accent); font-weight:500; text-decoration:none;">📄 View Power BI Report PDF ↗</a></p>
     </div>
   </div>
 </div>
@@ -729,6 +744,45 @@
         <li>Employees in the IT department (subquery filter)</li>
         <li>Employees with no department or non-existent department (UNION / FULL OUTER JOIN)</li>
       </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SALES DATA VALIDATION -->
+<div class="modal-overlay" id="modal-salesvalidation" onclick="closeOnOverlay(event, 'salesvalidation')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('salesvalidation')">✕</button>
+    <div class="modal-icon">✅</div>
+    <div class="modal-type">Data Validation · Power BI</div>
+    <h2>Sales Data Validation &amp; Analysis</h2>
+    <div class="modal-tags">
+      <span class="tag">Power BI</span><span class="tag">Data Validation</span><span class="tag">DAX</span><span class="tag">Power Query</span>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-section">
+      <h4>Project Overview</h4>
+      <p>Validated and analysed sales data using Power BI, combining my QA background with analytics skills to ensure data accuracy before surfacing business insights through quality-checked interactive dashboards. This project reflects a core strength — I don't just build dashboards, I verify the data underpinning them.</p>
+    </div>
+    <div class="modal-section">
+      <h4>Validation Approach</h4>
+      <ul>
+        <li>Identified and resolved data quality issues including incorrect data types, missing values, and duplicate records</li>
+        <li>Cross-validated calculated fields against source data to ensure DAX measures produced accurate outputs</li>
+        <li>Flagged anomalies and outliers in sales figures before including them in reporting</li>
+        <li>Documented data issues and transformation logic for reproducibility and auditability</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>Analysis & Outputs</h4>
+      <ul>
+        <li>Built interactive Power BI dashboard summarising validated sales performance across regions, products, and time periods</li>
+        <li>Applied DAX measures for revenue, cost, profit, and margin calculations on clean data</li>
+        <li>Delivered insights stakeholders could trust — data quality was verified before every visual was built</li>
+      </ul>
+    </div>
+    <div class="modal-section">
+      <h4>View Full Report</h4>
+      <p><a href="https://github.com/MahalakshmiKumar-Data/MahalakshmiKumar-Data.github.io/blob/main/Sales%20Analysis.pdf" target="_blank" rel="noopener" style="color: var(--accent); font-weight:500; text-decoration:none;">📄 View Power BI Report PDF ↗</a></p>
     </div>
   </div>
 </div>
